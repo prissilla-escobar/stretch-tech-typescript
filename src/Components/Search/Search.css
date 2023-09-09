@@ -1,0 +1,21 @@
+.search-area {
+    display: flex;
+    align-items: center;
+    height: 40%;
+    width: 300px;
+}
+#searchInput {
+    color: black;
+    height: 40px;
+    width: 200px;
+    margin-right: 10px;
+}
+
+.dunk-logo {
+    height: 35px;
+}
+
+.dunk-logo:hover {
+    height: 40px;
+    cursor: pointer;
+}
