@@ -20,6 +20,9 @@ export const getPlayers= (): any => {
         }
     })
       .then(response => {
+        if (!response.ok) {
+          throw new Error ('Team not found.')
+        }
         return response.json()
       })
   }
