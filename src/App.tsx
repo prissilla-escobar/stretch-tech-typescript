@@ -4,13 +4,7 @@ import { getPlayers, getTeams } from './API'
 import Header from './Components/Header/Header'
 import AllTeams from './Components/AllTeams/AllTeams'
 
-type AppProps {
-  teams: Team[]
-}
 
-type Team {
-  
-}
 const App = () => {
 
   const [teams, setTeams] = useState([])
@@ -35,7 +29,7 @@ const App = () => {
   return (
     <main>
       <Header />
-      <div className='test'>BODY TEST</div>
+      {/* <div className='test'>BODY TEST</div> */}
       <AllTeams teams={teams} />
     </main>
   )
