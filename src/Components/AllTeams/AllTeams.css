@@ -1,4 +1,8 @@
-.allTeams {
-  margin: auto;
-  font-size: 24px;
+.teams-cont {
+  /* margin: auto;
+  font-size: 24px; */
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
 }
