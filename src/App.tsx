@@ -3,7 +3,7 @@ import './App.css'
 import { getPlayers, getTeams } from './API'
 import Header from './Components/Header/Header'
 
-const App: React.FC = () => {
+const App = () => {
 
   useEffect(() => {
     getPlayers()
