@@ -3,7 +3,7 @@ import Search from '../Search/Search'
 import nbaLogo from '../../Assets/NBA-logo-png.png'
 
 
-const Header: React.FC = () => {
+const Header = () => {
     return (
         <header>
             <div className="page-name">
