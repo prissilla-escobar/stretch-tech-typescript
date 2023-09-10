@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
-import './App.css';
-import { getPlayers, getTeams } from './API';
+import { useEffect } from 'react'
+import './App.css'
+import { getPlayers, getTeams } from './API'
+import Header from './Components/Header/Header'
 
-function App() {
+const App = () => {
 
   useEffect(() => {
     getPlayers()
@@ -16,7 +17,11 @@ function App() {
   },[])
 
   return (
-    <header>Hello World</header>
+    <main>
+      <Header />
+      <div className='test'>BODY TEST</div>
+    </main>
   )
-  }
+}
+
 export default App;
