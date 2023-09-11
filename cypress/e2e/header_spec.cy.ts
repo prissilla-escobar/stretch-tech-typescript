@@ -13,4 +13,7 @@ describe('header component', () => {
     cy.visit('http://localhost:3000')
   })
   
+  it('should have a title on page load', () => {
+    cy.contains('h1','ROSTERWATCH')
+  })
 })
