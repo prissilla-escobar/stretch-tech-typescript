@@ -16,4 +16,8 @@ describe('header component', () => {
   it('should have a title on page load', () => {
     cy.contains('h1','ROSTERWATCH')
   })
+
+  it('should show a collection of NBA teams', () => {
+    cy.get('.teams-cont').find('.team-card').should('have.length', 30)
+  })
 })
