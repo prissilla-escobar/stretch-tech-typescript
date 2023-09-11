@@ -1,4 +1,8 @@
-export const getPlayers= (): any => {
+import { Player } from "./Components/SelectedTeam/SelectedTeam";
+import { Team } from './Components/AllTeams/AllTeams'
+
+
+export const getPlayers = (): Promise<{ data: Player[] }> => {
     return fetch('https://free-nba.p.rapidapi.com/players?page=0&per_page=100', {
       method: 'GET',
 	    headers: {
