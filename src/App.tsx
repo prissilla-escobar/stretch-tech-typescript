@@ -10,12 +10,9 @@ const App = () => {
   const [teams, setTeams] = useState([])
   const [serverError, setServerError] = useState({hasError: false, message: ''})
 
-
   useEffect(() => {
-    
     getTeams()
       .then((data: any) => {
-        // console.log(data)
         setTeams(data.data)
 
       })
@@ -23,13 +20,11 @@ const App = () => {
       .catch((error: any) => {
         setServerError({hasError: true, message: `${error.message}`})
       })
-
   },[])
 
   return (
     <main>
       <Header />
-      {/* <div className='test'>BODY TEST</div> */}
       <AllTeams teams={teams} />
     </main>
   )

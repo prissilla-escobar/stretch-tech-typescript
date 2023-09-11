@@ -13,15 +13,11 @@ type TeamCardProps = {
 const TeamCard = ({id, abbreviation, city, conference, division, full_name, name}: TeamCardProps) => {
   return (
     <div className="team-card">
-      <h3>I'm a card</h3>
+      {/* <h3>I'm a card</h3> */}
+      <h3>{city}</h3>
       <h3>{name}</h3>
     </div>
-
   )
 }
-
-
-
-
 
 export default TeamCard

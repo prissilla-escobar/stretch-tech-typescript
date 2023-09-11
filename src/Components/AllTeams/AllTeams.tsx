@@ -29,20 +29,13 @@ const AllTeams = ({ teams }: AllTeamsProps) => {
         name={team.name}
       />
     )
-
   })
-  const firstTeam = teams[0]
 
-  console.log('teams[0]: ', teams[0])
   return (
     <>
-      
-      {/* <h1 className='allTeams-cont'>Teams</h1>
-      <h2>{firstTeam.city}</h2> */}
       <div className="teams-cont">{teamCards}</div>
     </>
   )
-
 }
 
 
