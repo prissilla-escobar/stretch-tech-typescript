@@ -5,7 +5,6 @@ export type NBALogoType = {
   logo: string;
 }
 
-
 export const nbaLogos:NBALogoType[] = [
     {
       fullName: 'Atlanta Hawks',
@@ -89,7 +88,7 @@ export const nbaLogos:NBALogoType[] = [
       fullName: 'Los Angeles Lakers',
       teamName: 'Lakers',
       location: 'Los Angeles',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Los_Angeles_Lakers_logo.svg/1200px-Los_Angeles_Lakers_logo.svg.png'
+      logo: 'https://1000logos.net/wp-content/uploads/2017/03/Los-angeles-lakers.png'
     },
     {
       fullName: 'Memphis Grizzlies',
@@ -167,7 +166,7 @@ export const nbaLogos:NBALogoType[] = [
       fullName: 'San Antonio Spurs',
       teamName: 'Spurs',
       location: 'San Antonio',
-      logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/San_Antonio_Spurs.svg/1200px-San_Antonio_Spurs.svg.png'
+      logo: 'https://1000logos.net/wp-content/uploads/2018/01/San-Antonio-Spurs-Logo-2002.png'
     },
     {
       fullName: 'Toronto Raptors',
