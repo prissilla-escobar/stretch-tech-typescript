@@ -1,6 +1,5 @@
 import './AllTeams.css'
 import TeamCard from '../TeamCard/TeamCard'
-import { nbaLogos } from '../../nbaLogos'
 
 type Team = {
   id: number;
@@ -16,7 +15,7 @@ type AllTeamsProps = {
   teams: Team[]
 }
 const AllTeams = ({ teams }: AllTeamsProps) => {
-  
+
   const teamCards = teams.map((team) => {
     return(
       <TeamCard
@@ -33,10 +32,7 @@ const AllTeams = ({ teams }: AllTeamsProps) => {
   })
 
   return (
-    <>
-      <div className="teams-cont">{teamCards}
-      </div>
-    </>
+    <div className="teams-cont">{teamCards}</div>
   )
 }
 
