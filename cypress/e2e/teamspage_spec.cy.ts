@@ -23,5 +23,6 @@ describe('teams page on-load', () => {
 
   it('should show team details', () => {
     cy.get('.team-card').first().contains('h3', 'Hawks')
+    cy.get('.team-card').last().contains('h3', 'Wizards')
   })
 })
