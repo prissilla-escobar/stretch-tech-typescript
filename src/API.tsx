@@ -15,7 +15,7 @@ export const getPlayers = (): Promise<{ data: Player[] }> => {
       })
   }
 
-  export const getTeams= (): any => {
+  export const getTeams= (): Promise <{data: Team[] }> => {
     return fetch('https://free-nba.p.rapidapi.com/teams', {
       method: 'GET',
 	    headers: {

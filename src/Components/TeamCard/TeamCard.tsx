@@ -1,4 +1,5 @@
 import './TeamCard.css'
+import { Link } from 'react-router-dom';
 
 type TeamCardProps = {
   id: number;
@@ -12,12 +13,14 @@ type TeamCardProps = {
 
 const TeamCard = ({id, abbreviation, city, conference, division, full_name, name}: TeamCardProps) => {
   return (
-    <div className="team-card">
-      {/* <h3>I'm a card</h3> */}
-      <h3>{city}</h3>
-      <h3>{name}</h3>
-    </div>
-  )
+    <Link to={`/team/${id}`}>
+      <div className="team-card">
+        <h3>{city}</h3>
+        <h3>{name}</h3>
+      </div>
+    </Link>
+  );
+  
 }
 
 export default TeamCard
