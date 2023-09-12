@@ -17,6 +17,10 @@ describe('teams page on-load', () => {
     cy.contains('h1','ROSTERWATCH')
   })
 
+  it('should have a search input', () => {
+    cy.get('input#searchInput')
+  })
+
   it('should show a collection of NBA teams', () => {
     cy.get('.teams-cont').find('.team-card').should('have.length', 30)
   })
