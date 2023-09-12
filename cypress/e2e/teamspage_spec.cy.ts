@@ -6,11 +6,11 @@ describe('template spec', () => {
 
 describe('teams page on-load', () => {
   beforeEach(() => {
-    cy.intercept("GET", "https://free-nba.p.rapidapi.com/players?page=0&per_page=100", {
+    cy.visit('http://localhost:3000')
+    cy.intercept("GET", "https://free-nba.p.rapidapi.com/teams", {
       statusCode: 200,
       fixture: "teamsData"
     })
-    cy.visit('http://localhost:3000')
   })
   
   it('should have a title on page load', () => {
@@ -22,7 +22,7 @@ describe('teams page on-load', () => {
   })
 
   it('should show a collection of NBA teams', () => {
-    cy.get('.teams-cont').find('.team-card').should('have.length', 30)
+    cy.get('.teams-cont').find('.team-card').should('have.length', 3)
   })
 
   it('should show team details', () => {
