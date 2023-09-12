@@ -1,4 +1,5 @@
 import './TeamCard.css'
+import { nbaLogos, NBALogoType } from '../../nbaLogos'
 
 type TeamCardProps = {
   id: number;
@@ -11,9 +12,16 @@ type TeamCardProps = {
 }
 
 const TeamCard = ({id, abbreviation, city, conference, division, full_name, name}: TeamCardProps) => {
+
+  const individualLogo: NBALogoType | undefined  = nbaLogos.find((team) => {
+    if (team.fullName === full_name) {
+      return team
+    }
+  })
+
   return (
     <div className="team-card">
-      {/* <h3>I'm a card</h3> */}
+      <img className="team-logo" src={`${individualLogo?.logo}`} alt={`${full_name} logo`} />
       <h3>{city}</h3>
       <h3>{name}</h3>
     </div>
