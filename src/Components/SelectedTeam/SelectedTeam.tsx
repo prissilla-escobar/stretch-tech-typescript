@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Team } from '../AllTeams/AllTeams';
 import { getPlayers } from '../../API'
+import '../../Components/SelectedTeam/SelectedTeam.css'
 
 export type Player = {
     id: number;
@@ -18,6 +19,7 @@ export type Player = {
     useEffect(() => {
       getPlayers()
         .then((data: any) => {
+            console.log("Player Data:", data.data)
           const filteredPlayers = data.data.filter((player: Player) => player.team.id.toString() === teamId);
           setPlayers(filteredPlayers);
         })
@@ -27,8 +29,8 @@ export type Player = {
     }, [teamId]);
   
     return (
-      <div>
-        <h2 className='roster-container'>Current Roster</h2>
+      <div className= 'background-img'>
+        <h2 className='roster-container'>Notable Players</h2>
         <ul className='roster-list'>
         {players.map(player => (
           <li key={player.id} className='player'>
