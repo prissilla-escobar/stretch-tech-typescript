@@ -1,7 +1,7 @@
 import './AllTeams.css'
 import TeamCard from '../TeamCard/TeamCard'
 
-type Team = {
+export type Team = {
   id: number;
   abbreviation: string;
   city: string;
