@@ -15,7 +15,7 @@ type AllTeamsProps = {
   teams: Team[]
 }
 const AllTeams = ({ teams }: AllTeamsProps) => {
-  console.log('teams: ', teams)
+
   const teamCards = teams.map((team) => {
     return(
       <TeamCard
@@ -32,9 +32,7 @@ const AllTeams = ({ teams }: AllTeamsProps) => {
   })
 
   return (
-    <>
-      <div className="teams-cont">{teamCards}</div>
-    </>
+    <div className="teams-cont">{teamCards}</div>
   )
 }
 

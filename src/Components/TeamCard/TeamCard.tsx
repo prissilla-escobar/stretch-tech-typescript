@@ -1,4 +1,5 @@
 import './TeamCard.css'
+import { nbaLogos, NBALogoType } from '../../nbaLogos'
 import { Link } from 'react-router-dom';
 
 type TeamCardProps = {
@@ -12,15 +13,23 @@ type TeamCardProps = {
 }
 
 const TeamCard = ({id, abbreviation, city, conference, division, full_name, name}: TeamCardProps) => {
+
+  const individualLogo: NBALogoType | undefined  = nbaLogos.find((team) => {
+    if (team.fullName === full_name) {
+      return team
+    }
+  })
+
   return (
-    <Link to={`/team/${id}`}>
-      <div className="team-card">
-        <h3>{city}</h3>
-        <h3>{name}</h3>
+   <Link to={`/team/${id}`}>      
+    <div className="team-card">
+      <img className="team-logo" src={`${individualLogo?.logo}`} alt={`${full_name} logo`} />
+      <div className="team-name">
+        <h3>{city} {name}</h3>
       </div>
-    </Link>
-  );
-  
+    </div>
+   </Link>   
+  )
 }
 
 export default TeamCard
