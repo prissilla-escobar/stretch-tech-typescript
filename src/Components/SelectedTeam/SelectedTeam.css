@@ -1,0 +1,45 @@
+h2, ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  .roster-container {
+    top: 0;
+    left: 0;
+    margin: 10px;
+    font-size: 55px;
+    -webkit-text-stroke: 4px #1D428A;
+    -webkit-text-fill-color: rgb(245, 189, 50);
+    font-family: helvetica;
+    margin-left: 30px;
+    margin-bottom: 10px;
+  }
+  
+  .roster-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+     margin: 15vh; 
+    border: solid blue;
+    border-radius: 10px;
+    background-color: gray;
+    opacity: 70%
+
+  }
+  
+  .player {
+    margin: 5px 0;
+    color: black
+  }
+  
+  .background-img {
+    background-image: url(https://advancedhoops.com/wp-content/uploads/2021/08/Basketball-Court-Wood-Background-7267-Best-Wallpapers-Basketball-Court.jpg);
+    width: 100vw;
+    height: 100vh;
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center; 
+}

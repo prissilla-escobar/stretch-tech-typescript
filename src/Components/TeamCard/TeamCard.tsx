@@ -1,5 +1,6 @@
 import './TeamCard.css'
 import { nbaLogos, NBALogoType } from '../../nbaLogos'
+import { Link } from 'react-router-dom';
 
 type TeamCardProps = {
   id: number;
@@ -20,12 +21,14 @@ const TeamCard = ({id, abbreviation, city, conference, division, full_name, name
   })
 
   return (
+   <Link to={`/team/${id}`}>      
     <div className="team-card">
       <img className="team-logo" src={`${individualLogo?.logo}`} alt={`${full_name} logo`} />
       <div className="team-name">
         <h3>{city} {name}</h3>
       </div>
     </div>
+   </Link>   
   )
 }
 
