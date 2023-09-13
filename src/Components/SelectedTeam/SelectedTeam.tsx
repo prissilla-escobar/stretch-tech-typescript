@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Team } from '../AllTeams/AllTeams';
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { Team } from '../AllTeams/AllTeams'
 import { getPlayers } from '../../API'
+import { nbaLogos, NBALogoType } from '../../nbaLogos'
 import '../../Components/SelectedTeam/SelectedTeam.css'
-import ErrorComponent from '../Error/Error';
+import ErrorComponent from '../Error/Error'
 
 export type Player = {
     id: number;
@@ -14,24 +15,30 @@ export type Player = {
 };
 
 const SelectedTeam = () => {
-    const { teamId } = useParams<{ teamId: string }>();
-    const [players, setPlayers] = useState<Player[]>([]);
-    const [error, setError] = useState<string | null>(null);
+    const { teamId } = useParams<{ teamId: string }>()
+    const [players, setPlayers] = useState<Player[]>([])
+    const [error, setError] = useState<string | null>(null)
+  
+  const selectedTeamLogo: NBALogoType | undefined  = nbaLogos.find((team) => {
+      if (team.id === teamId) {
+        return team
+      }
+    })
 
     useEffect(() => {
         getPlayers()
             .then((data: any) => {
-                const filteredPlayers = data.data.filter((player: Player) => player.team.id.toString() === teamId);
-                setPlayers(filteredPlayers);
+                const filteredPlayers = data.data.filter((player: Player) => player.team.id.toString() === teamId)
+                setPlayers(filteredPlayers)
             })
             .catch((error: any) => {
-                console.error("Failed to fetch players:", error);
-                setError(error.message || "An error occurred while fetching players.");
+                console.error("Failed to fetch players:", error)
+                setError(error.message || "An error occurred while fetching players.")
             });
-    }, [teamId]);
+    }, [teamId])
 
     if (error) {
-        return <ErrorComponent message={error} resetError={() => setError(null)} />;
+        return <ErrorComponent message={error} resetError={() => setError(null)} />
     }
 
     return (
@@ -44,8 +51,11 @@ const SelectedTeam = () => {
                     </li>
                 ))}
             </ul>
+        <div className='sel-team-logo'>
+            <img className="sel-team-logo" src={`${selectedTeamLogo?.logo}`} alt={`${selectedTeamLogo?.fullName} logo`} />
+          </div>
         </div>
-    );
+    )
 }
 
 export default SelectedTeam;
