@@ -40,21 +40,23 @@ export type Player = {
       <div className= 'background-img'>
         <div className="players-logo-cont">
           <div className='roster-list-container'>
-              <h2 className='roster-container'>Notable Players:</h2>
-              {players.length === 0 ? (
-                <p>No notable players.</p>
-              ) : (
-              <div>
-                {players.map(player => (
-                  <ul key={player.id} className='player'>
-                    {player.first_name} {player.last_name}
-                  </ul>
-                ))}
-              </div>
-              )}
-              <Link to="/" >
-                  <img className="back-button" src={back} alt="back button" />
-              </Link>
+            <div className="roster-container">
+                <h2 className='roster-header'>Notable Players:</h2>
+                {players.length === 0 ? (
+                  <p>No notable players.</p>
+                ) : (
+                <div className='player-list'>
+                  {players.map(player => (
+                    <ul key={player.id} className='player'>
+                      {player.first_name} {player.last_name}
+                    </ul>
+                  ))}
+                </div>
+                )}
+                <Link to="/" >
+                    <img className="back-button" src={back} alt="back button" />
+                </Link>
+            </div>
           </div>
           <div className='sel-team-logo'>
              <img className="sel-team-logo" src={`${selectedTeamLogo?.logo}`} alt={`${selectedTeamLogo?.fullName} logo`} />
