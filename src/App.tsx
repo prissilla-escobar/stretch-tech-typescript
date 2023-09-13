@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import { getPlayers, getTeams } from './API'
+import { getTeams } from './API'
 import Header from './Components/Header/Header'
 import AllTeams from './Components/AllTeams/AllTeams'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -32,8 +32,8 @@ const App = () => {
       <main>
         <Header />
         <Routes>
-        <Route path="/" element={<AllTeams teams={teams} />} />
-        <Route path="/team/:teamId" element={<SelectedTeam />} />
+          <Route path="/" element={<AllTeams teams={teams} />} />
+          <Route path="/team/:teamId" element={<SelectedTeam />} />
         </Routes>
       </main>
     </Router>
