@@ -16,7 +16,7 @@ export type Player = {
 const SelectedTeam = () => {
     const { teamId } = useParams<{ teamId: string }>();
     const [players, setPlayers] = useState<Player[]>([]);
-    const [error, setError] = useState<string | null>(null); // Local error state
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         getPlayers()

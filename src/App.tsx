@@ -9,7 +9,6 @@ import ErrorComponent from './Components/Error/Error'
 
 const App = () => {
   const [teams, setTeams] = useState([])
-  // const [players, setPlayers] = useState([])
   const [serverError, setServerError] = useState({hasError: false, message: ''})
 
   useEffect(() => {
@@ -20,14 +19,6 @@ const App = () => {
       .catch((error: any) => {
         setServerError({hasError: true, message: `${error.message}`});
       });
-
-    // getPlayers()
-    //   .then((data: any) => {
-    //     setPlayers(data.data);
-    //   })
-    //   .catch((error: any) => {
-    //     setServerError({hasError: true, message: `${error.message}`});
-    //   });
 
 }, []);
 
