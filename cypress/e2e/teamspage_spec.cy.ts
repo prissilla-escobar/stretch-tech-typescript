@@ -1,8 +1,4 @@
-describe('template spec', () => {
-  it('passes', () => {
-    cy.visit('https://example.cypress.io')
-  })
-})
+
 
 describe('teams page on-load', () => {
   beforeEach(() => {
@@ -10,7 +6,7 @@ describe('teams page on-load', () => {
     cy.intercept("GET", "https://free-nba.p.rapidapi.com/teams", {
       statusCode: 200,
       fixture: "teamsData"
-    })
+    }).as('teamsApiTest')
   })
   
   it('should have a title on page load', () => {
@@ -22,6 +18,7 @@ describe('teams page on-load', () => {
   })
 
   it('should show a collection of NBA teams', () => {
+    cy.wait(['@teamsApiTest'])
     cy.get('.teams-cont').find('.team-card').should('have.length', 3)
   })
 
