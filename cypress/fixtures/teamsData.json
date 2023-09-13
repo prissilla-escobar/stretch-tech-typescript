@@ -1,0 +1,29 @@
+[
+  {
+    "abbreviation": "ATL",
+    "city": "Atlanta",
+    "conference": "East",
+    "division": "Southeast",
+    "full_name": "Atlanta Hawks",
+    "id": 1,
+    "name": "Hawks"
+  },
+  {
+    "abbreviation": "CLE",
+    "city": "Cleveland",
+    "conference": "East",
+    "division": "Central",
+    "full_name": "Cleveland Cavaliers",
+    "id": 6,
+    "name": "Cavaliers"
+  },
+  {
+    "abbreviation": "WAS",
+    "city": "Washington",
+    "conference": "East",
+    "division": "Southeast",
+    "full_name": "Washington Wizards",
+    "id": 30,
+    "name": "Wizards"
+  }
+]
