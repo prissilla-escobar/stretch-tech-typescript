@@ -1,5 +1,4 @@
-h2,
-ul {
+h2, ul {
   margin: 0;
   padding: 0;
   list-style-type: none;
@@ -10,27 +9,31 @@ ul {
   left: 0;
   margin: 10px;
   font-size: 55px;
-  -webkit-text-stroke: 4px #1D428A;
+  -webkit-text-stroke: 3px #1D428A;
   -webkit-text-fill-color: rgb(245, 189, 50);
   font-family: helvetica;
   margin-left: 30px;
   margin-bottom: 10px;
 }
   
-.roster-list {
+.roster-list-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   height: 50vh;
   width: 40vw;
-  /* margin: 15vh;  */
   font-size: 30px;
   border: solid blue;
   border-radius: 10px;
   background-color: lightgray;
   opacity: 70%
 
+}
+
+p {
+  color: #1D428A;
+  font-size: 40px;
 }
   
 .player {
@@ -48,18 +51,20 @@ ul {
 }
 
 .players-logo-cont {
-  /* border: 3px solid red; */
   height: 75vh;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-
 }
 
 .sel-team-logo {
-  /* border: solid blue; */
   display: flex;
   flex-direction: row;
   max-width: 25vw;
   color: white;
+}
+
+.back-button {
+  height: 60px;
+  margin-top: 10px;
 }
