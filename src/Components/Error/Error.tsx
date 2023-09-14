@@ -23,7 +23,7 @@ type ErrorProps = {
   </h2>
   <NavLink to='/' className='nav'>
     <div onClick={handleReset}>
-      <button className='back-button'>RosterWatch Home</button>
+      <button className='home-link'>RosterWatch Home</button>
     </div>
   </NavLink>
 </div>
