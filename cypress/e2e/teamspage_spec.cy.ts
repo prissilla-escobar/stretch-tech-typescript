@@ -38,39 +38,39 @@ describe('teams page on-load', () => {
 // it('should show team 3 details', () => {
 //   cy.visit('http://localhost:3000')
 //   cy.wait(['@teamsApiTest'])
-  // cy.get('.teams-cont').children()
-  //     .get(':nth-child(3) > .team-card')
+//   cy.get('.teams-cont').children()
+//       .get(':nth-child(3) > .team-card')
 //     cy.get('.team-card').last()
 //         .contains('h3', 'Washington Wizards')
 //         .get('img.team-logo').should('have.attr', 'alt', 'Washington Wizards logo')
 // })
 
-it('should update url to clicked team details', () => {
-  cy.get('.team-card').first().click()
-    .url().should('eq', 'http://localhost:3000/team/1')
+  it('should update url to clicked team details', () => {
+    cy.get('.team-card').first().click()
+      .url().should('eq', 'http://localhost:3000/team/1')
 
-  cy.visit('http://localhost:3000')
-    .get('.team-card').last().click()
-    .url().should('eq', 'http://localhost:3000/team/30')
-})
-
-it('should display an error message for 500 error', () => {
-  cy.intercept('GET', 'https://free-nba.p.rapidapi.com/teams', {
-    statusCode: 500,
+    cy.visit('http://localhost:3000')
+      .get('.team-card').last().click()
+      .url().should('eq', 'http://localhost:3000/team/30')
   })
-  cy.contains('h2', 'Uh-oh...That\'s an airball!')
-  cy.get('.home-link').click()
-    .url().should('eq', 'http://localhost:3000/')
-})
 
-it('should display an error message for 400 error', () => {
-  cy.intercept('GET', 'https://free-nba.p.rapidapi.com/teams', {
-    statusCode: 400,
+  it('should display an error message for 500 error', () => {
+    cy.intercept('GET', 'https://free-nba.p.rapidapi.com/teams', {
+      statusCode: 500,
+    })
+    cy.contains('h2', 'Uh-oh...That\'s an airball!')
+    cy.get('.home-link').click()
+      .url().should('eq', 'http://localhost:3000/')
   })
-  cy.contains('h2', 'Uh-oh...That\'s an airball!')
-  cy.get('.home-link').click()
-    .url().should('eq', 'http://localhost:3000/')
-})
+
+  it('should display an error message for 400 error', () => {
+    cy.intercept('GET', 'https://free-nba.p.rapidapi.com/teams', {
+      statusCode: 400,
+    })
+    cy.contains('h2', 'Uh-oh...That\'s an airball!')
+    cy.get('.home-link').click()
+      .url().should('eq', 'http://localhost:3000/')
+  })
 
 it('should display an error message for 300 response', () => {
   cy.intercept('GET', 'https://free-nba.p.rapidapi.com/teams', {
@@ -80,5 +80,4 @@ it('should display an error message for 300 response', () => {
   cy.get('.home-link').click()
     .url().should('eq', 'http://localhost:3000/')
   })
-
 })
