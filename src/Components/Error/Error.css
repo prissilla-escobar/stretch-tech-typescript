@@ -1,3 +1,7 @@
+.error-photo {
+  height: 300px;
+}
+
 .error-msg {
     min-height: 88.3vh;
     display: flex;

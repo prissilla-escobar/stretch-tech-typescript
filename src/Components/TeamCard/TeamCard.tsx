@@ -25,7 +25,7 @@ const TeamCard = ({id, abbreviation, city, conference, division, full_name, name
     <div className="team-card">
       <img className="team-logo" src={`${individualLogo?.logo}`} alt={`${full_name} logo`} />
       <div className="team-name">
-        <h3>{city} {name}</h3>
+        <h2>{city} {name}</h2>
       </div>
     </div>
    </Link>   

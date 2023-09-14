@@ -13,6 +13,7 @@ type ErrorProps = {
 
   return (
     <div className='error-msg'>
+      <img className="error-photo" src='https://media.npr.org/assets/img/2016/03/29/ap_090911089838_sq-3271237f28995f6530d9634ff27228cae88e3440.jpg' alt='Photo of Shaquille ONeal crying' />
   <h2>Uh-oh...That's an airball!</h2>
   <h2>
     {!props.message 
