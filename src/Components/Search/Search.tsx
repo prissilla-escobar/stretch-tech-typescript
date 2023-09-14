@@ -33,6 +33,7 @@ const createFilteredTeams = () => {
   let unfilteredTeams = [...teams]
 
   const subsetTeams = unfilteredTeams.filter(team => {
+    console.log('subset team: ', team)
     return (
       
       team.city.toLowerCase().includes(searchField.toLowerCase()) ||
@@ -42,6 +43,8 @@ const createFilteredTeams = () => {
   })
   setFilteredTeams(subsetTeams)
 }
+
+
 
 useEffect(() => {
   createFilteredTeams()
@@ -53,12 +56,18 @@ useEffect(() => {
   //   )
   // }
 
+  const searchHandler =(e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setSearchField(value)
+  }
+
+
     return (
         <div className="search-area">
             <form>
                 <input type='search' id="searchInput" name="q" placeholder='Search Team Name & Dunk >'
                 value={searchField}
-                onChange={event => setSearchField(event.target.value.trim)} />
+                onChange={event => searchHandler(event)} />
             </form>
             <img className="dunk-logo" src={dunkLogo} alt="a black silouhette of a man dunking a basketball" />
             <AllTeams filteredTeams={filteredTeams} />

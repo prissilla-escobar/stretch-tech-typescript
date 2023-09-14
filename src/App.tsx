@@ -40,7 +40,7 @@ console.log('App teams: ', teams)
           />
         ) : (
         <Routes> 
-          <Route path="/" element={<AllTeams />} />
+          <Route path="/" element={<AllTeams teams={teams}/>} />
           <Route path="/team/:teamId" element={<SelectedTeam />} />
           <Route path="*" element={<ErrorComponent message={{message: "The page you're looking for doesn't exist."}} resetError={resetError} />} />
         </Routes>

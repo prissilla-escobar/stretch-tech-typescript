@@ -10,12 +10,18 @@ export type Team = {
   full_name: string;
   name: string;
 }
-
+type AllTeamsTeamsProps = { teams?: Team[]}
 type AllTeamsProps = {
-  filteredTeams: Team[]; // Type assertion here
+  filteredTeams?: Team[]; // Type assertion here
 }
 
-const AllTeams = ({ filteredTeams }: AllTeamsProps) => {
+const AllTeams = ({ filteredTeams, teams }: AllTeamsProps & AllTeamsTeamsProps) => {
+
+  console.log('AllTeams filteredTeams: ', filteredTeams)
+
+  console.log('AllTeams teams: ', teams)
+
+
   const teamCards = (filteredTeams ?? []).map((team) => (
     <TeamCard
       key={team.id}
