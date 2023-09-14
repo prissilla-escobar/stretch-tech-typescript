@@ -3,42 +3,47 @@ import './App.css'
 import { getTeams } from './API'
 import Header from './Components/Header/Header'
 import AllTeams from './Components/AllTeams/AllTeams'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import SelectedTeam from './Components/SelectedTeam/SelectedTeam'
-
-
+import ErrorComponent from './Components/Error/Error'
 
 const App = () => {
-
   const [teams, setTeams] = useState([])
-  const [players, setPlayers] = useState([])
   const [serverError, setServerError] = useState({hasError: false, message: ''})
 
   useEffect(() => {
     getTeams()
       .then((data: any) => {
-        setTeams(data.data);
-        setPlayers(data.data)
-
+        setTeams(data.data)
       })
-      // we don't want to use :any here, how to fix?
       .catch((error: any) => {
         setServerError({hasError: true, message: `${error.message}`})
       })
-  },[])
+}, [])
+  
+  const resetError = () => {
+    setServerError({hasError: false, message: ''})
+  }
 
   return (
     <Router>
       <main>
         <Header />
-        <Routes>
+        {serverError.hasError ? (
+          <ErrorComponent 
+            message={serverError.message} 
+            resetError={resetError}
+          />
+        ) : (
+        <Routes> 
           <Route path="/" element={<AllTeams teams={teams} />} />
           <Route path="/team/:teamId" element={<SelectedTeam />} />
+          <Route path="*" element={<ErrorComponent message={{message: "The page you're looking for doesn't exist."}} resetError={resetError} />} />
         </Routes>
+        )}
       </main>
     </Router>
-  );
-  }
-  
+  )
+}
 
-export default App;
+export default App

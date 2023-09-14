@@ -5,6 +5,7 @@ import { getPlayers } from '../../API'
 import { nbaLogos, NBALogoType } from '../../nbaLogos'
 import '../../Components/SelectedTeam/SelectedTeam.css'
 import back from '../../Assets/back-button.png'
+import ErrorComponent from '../Error/Error'
 
 export type Player = {
     id: number;
@@ -12,28 +13,28 @@ export type Player = {
     last_name: string;
     position: string;
     team: Team;
-  };
-  
-  const SelectedTeam = () => {
-    const { teamId } = useParams<{ teamId: string }>();
-    const [players, setPlayers] = useState<Player[]>([]);
+};
 
-    useEffect(() => {
-      getPlayers()
-        .then((data: any) => {
-          const filteredPlayers = data.data.filter((player: Player) => player.team.id.toString() === teamId);
-          setPlayers(filteredPlayers);
-        })
-        .catch((error: any) => {
-          console.error("Failed to fetch players:", error);
-        });
-    }, [teamId]);
-    
-    const selectedTeamLogo: NBALogoType | undefined  = nbaLogos.find((team) => {
-      if (team.id === teamId) {
-        return team
-      }
-    })
+const SelectedTeam = () => {
+    const { teamId } = useParams<{ teamId: string }>()
+    const [players, setPlayers] = useState<Player[]>([])
+    const [error, setError] = useState<string | null>(null)
+  
+   useEffect(() => {
+        getPlayers()
+            .then((data: any) => {
+                const filteredPlayers = data.data.filter((player: Player) => player.team.id.toString() === teamId)
+                setPlayers(filteredPlayers)
+            })
+            .catch((error: any) => {
+                console.error("Failed to fetch players:", error)
+                setError(error.message || "An error occurred while fetching players.")
+            })
+    }, [teamId])
+
+    if (error) {
+        return <ErrorComponent message={error} resetError={() => setError(null)} />
+    }
 
     return (
 
@@ -66,5 +67,6 @@ export type Player = {
 
     )
   }
+
 
 export default SelectedTeam;
