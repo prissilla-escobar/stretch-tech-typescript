@@ -19,7 +19,13 @@ const SelectedTeam = () => {
     const { teamId } = useParams<{ teamId: string }>()
     const [players, setPlayers] = useState<Player[]>([])
     const [error, setError] = useState<string | null>(null)
-  
+    const selectedTeamLogo: NBALogoType | undefined  = nbaLogos.find((team) => {
+      if (team.id === teamId) {
+        console.log('find team: ', team)
+        return team
+      }
+    })
+    
    useEffect(() => {
         getPlayers()
             .then((data: any) => {
