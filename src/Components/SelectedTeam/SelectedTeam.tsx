@@ -34,7 +34,7 @@ const SelectedTeam = () => {
         setPlayers(filteredPlayers);
         setTimeout(() => {
           setLoading(false);
-      }, 1500);
+      }, 300);
       })
       .catch((error: any) => {
         console.error("Failed to fetch players:", error);
