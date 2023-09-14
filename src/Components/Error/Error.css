@@ -1,3 +1,7 @@
+.error-photo {
+  height: 300px;
+}
+
 .error-msg {
     min-height: 88.3vh;
     display: flex;
@@ -10,7 +14,7 @@
     margin-top: 5vh;
   }
   
-  .back-button {
+  .home-link {
     height: 12.5vh;
     width: 40vw;
     font-size: 6vh;
@@ -26,7 +30,7 @@
     margin-top: 5vh;
   }
   
-  .back-button:hover {
+  .home-link:hover {
     background-color: hsla(229, 99%, 50%, 0.5);
     color: black;
     border-radius: 5px;
