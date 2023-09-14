@@ -17,6 +17,13 @@ export type Player = {
 };
 
 const SelectedTeam = () => {
+  const { teamId } = useParams<{ teamId: string }>();
+  const [players, setPlayers] = useState<Player[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true); // <-- Loading state
+  const selectedTeamLogo: NBALogoType | undefined = nbaLogos.find(
+    (team) => team.id === teamId
+  );
   useEffect(() => {
     setLoading(true); // <-- Start loading
     getPlayers()
