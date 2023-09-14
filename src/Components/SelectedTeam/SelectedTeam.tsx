@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { Team } from '../AllTeams/AllTeams';
+import { useEffect, useState } from 'react'
+import { useParams, Link } from 'react-router-dom'
+import { Team } from '../AllTeams/AllTeams'
 import { getPlayers } from '../../API'
 import { nbaLogos, NBALogoType } from '../../nbaLogos'
 import '../../Components/SelectedTeam/SelectedTeam.css'
@@ -13,7 +13,7 @@ export type Player = {
     last_name: string;
     position: string;
     team: Team;
-};
+}
 
 const SelectedTeam = () => {
     const { teamId } = useParams<{ teamId: string }>()
@@ -21,7 +21,6 @@ const SelectedTeam = () => {
     const [error, setError] = useState<string | null>(null)
     const selectedTeamLogo: NBALogoType | undefined  = nbaLogos.find((team) => {
       if (team.id === teamId) {
-        console.log('find team: ', team)
         return team
       }
     })
@@ -70,9 +69,7 @@ const SelectedTeam = () => {
           </div>
         </div>
       </div>
-
     )
   }
-
 
 export default SelectedTeam;
