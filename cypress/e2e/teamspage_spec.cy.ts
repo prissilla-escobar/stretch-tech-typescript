@@ -1,5 +1,3 @@
-
-
 describe('teams page on-load', () => {
   beforeEach(() => {
     cy.intercept("GET", "https://free-nba.p.rapidapi.com/teams", {
@@ -8,22 +6,79 @@ describe('teams page on-load', () => {
     }).as('teamsApiTest').visit('http://localhost:3000')
   })
   
-  it('should have a title on page load', () => {
-    cy.wait('@teamsApiTest')
-    cy.contains('h1','ROSTERWATCH')
-  })
+  it('should have a header on page load', () => {
+    cy.location('pathname').should('eq', '/')
+    cy.get('header').should('exist')
+      .contains('h1','ROSTERWATCH')
 
-  it('should have a search input', () => {
-    cy.get('input#searchInput')
+    .get('img').should('have.attr', 'src')
+
+      .get('.search-area').should('exist')
+      .get('img').should('have.class', 'dunk-logo')
+      .get('input').should('not.have.value')
   })
 
   it('should show a collection of NBA teams', () => {
     cy.wait(['@teamsApiTest'])
     cy.get('.teams-cont').find('.team-card').should('have.length', 3)
+
+    cy.get('.team-card').first().contains('h3', 'Hawks')
+
   })
 
   it('should show team details', () => {
-    cy.get('.team-card').first().contains('h3', 'Hawks')
-    cy.get('.team-card').last().contains('h3', 'Wizards')
+    cy.wait(['@teamsApiTest'])
+    cy.get('.teams-cont').children()
+      .get(':nth-child(1)')
+        .contains('h3', 'Atlanta Hawks')
+        .get('img.team-logo').should('have.attr', 'alt', 'Atlanta Hawks logo')
   })
+
+  // HELP PLEASE
+// it('should show team 3 details', () => {
+//   cy.visit('http://localhost:3000')
+//   cy.wait(['@teamsApiTest'])
+  // cy.get('.teams-cont').children()
+  //     .get(':nth-child(3) > .team-card')
+//     cy.get('.team-card').last()
+//         .contains('h3', 'Washington Wizards')
+//         .get('img.team-logo').should('have.attr', 'alt', 'Washington Wizards logo')
+// })
+
+it('should update url to clicked team details', () => {
+  cy.get('.team-card').first().click()
+    .url().should('eq', 'http://localhost:3000/team/1')
+
+  cy.visit('http://localhost:3000')
+    .get('.team-card').last().click()
+    .url().should('eq', 'http://localhost:3000/team/30')
+})
+
+it('should display an error message for 500 error', () => {
+  cy.intercept('GET', 'https://free-nba.p.rapidapi.com/teams', {
+    statusCode: 500,
+  })
+  cy.contains('h2', 'Uh-oh...That\'s an airball!')
+  cy.get('.home-link').click()
+    .url().should('eq', 'http://localhost:3000/')
+})
+
+it('should display an error message for 400 error', () => {
+  cy.intercept('GET', 'https://free-nba.p.rapidapi.com/teams', {
+    statusCode: 400,
+  })
+  cy.contains('h2', 'Uh-oh...That\'s an airball!')
+  cy.get('.home-link').click()
+    .url().should('eq', 'http://localhost:3000/')
+})
+
+it('should display an error message for 300 response', () => {
+  cy.intercept('GET', 'https://free-nba.p.rapidapi.com/teams', {
+    statusCode: 300,
+  })
+  cy.contains('h2', 'Uh-oh...That\'s an airball!')
+  cy.get('.home-link').click()
+    .url().should('eq', 'http://localhost:3000/')
+  })
+
 })
