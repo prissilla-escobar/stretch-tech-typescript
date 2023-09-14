@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { Team } from '../AllTeams/AllTeams'
+import { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { Team } from '../AllTeams/AllTeams';
 import { getPlayers } from '../../API'
 import { nbaLogos, NBALogoType } from '../../nbaLogos'
 import '../../Components/SelectedTeam/SelectedTeam.css'
+import back from '../../Assets/back-button.png'
 import ErrorComponent from '../Error/Error'
 
 export type Player = {
@@ -19,13 +20,7 @@ const SelectedTeam = () => {
     const [players, setPlayers] = useState<Player[]>([])
     const [error, setError] = useState<string | null>(null)
   
-  const selectedTeamLogo: NBALogoType | undefined  = nbaLogos.find((team) => {
-      if (team.id === teamId) {
-        return team
-      }
-    })
-
-    useEffect(() => {
+   useEffect(() => {
         getPlayers()
             .then((data: any) => {
                 const filteredPlayers = data.data.filter((player: Player) => player.team.id.toString() === teamId)
@@ -34,7 +29,7 @@ const SelectedTeam = () => {
             .catch((error: any) => {
                 console.error("Failed to fetch players:", error)
                 setError(error.message || "An error occurred while fetching players.")
-            });
+            })
     }, [teamId])
 
     if (error) {
@@ -42,20 +37,36 @@ const SelectedTeam = () => {
     }
 
     return (
-        <div className='background-img'>
-            <h2 className='roster-container'>Notable Players</h2>
-            <ul className='roster-list'>
-                {players.map(player => (
-                    <li key={player.id} className='player'>
-                        {player.first_name} {player.last_name} - {player.position}
-                    </li>
-                ))}
-            </ul>
-        <div className='sel-team-logo'>
-            <img className="sel-team-logo" src={`${selectedTeamLogo?.logo}`} alt={`${selectedTeamLogo?.fullName} logo`} />
+
+      <div className= 'background-img'>
+        <div className="players-logo-cont">
+          <div className='roster-list-container'>
+            <div className="roster-container">
+                <h2 className='roster-header'>Notable Players:</h2>
+                {players.length === 0 ? (
+                  <p>No notable players.</p>
+                ) : (
+                <div className='player-list'>
+                  {players.map(player => (
+                    <ul key={player.id} className='player'>
+                      {player.first_name} {player.last_name}
+                    </ul>
+                  ))}
+                </div>
+                )}
+                <Link to="/" >
+                    <img className="back-button" src={back} alt="back button" />
+                </Link>
+            </div>
+          </div>
+          <div className='sel-team-logo'>
+             <img className="sel-team-logo" src={`${selectedTeamLogo?.logo}`} alt={`${selectedTeamLogo?.fullName} logo`} />
           </div>
         </div>
+      </div>
+
     )
-}
+  }
+
 
 export default SelectedTeam;
