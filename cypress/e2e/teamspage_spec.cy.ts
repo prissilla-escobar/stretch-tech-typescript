@@ -11,7 +11,7 @@ describe('teams page on-load', () => {
     cy.get('header').should('exist')
       .contains('h1','ROSTERWATCH')
 
-    .get('img').should('have.attr', 'src')
+      .get('img').should('have.attr', 'src', '/static/media/NBA-logo-png.92cb6f78ebae7938d944.png')
 
       .get('.search-area').should('exist')
       .get('img').should('have.class', 'dunk-logo')
@@ -34,13 +34,13 @@ describe('teams page on-load', () => {
         .get('img.team-logo').should('have.attr', 'alt', 'Atlanta Hawks logo')
   })
 
-it('should show team 3 details', () => {
-  cy.get('.teams-cont').children()
-    cy.get('.team-card').last()
-      .find('h2').contains('Washington Wizards')
-      .get('.team-card').last()
-      .find('img.team-logo').should('have.attr', 'alt', 'Washington Wizards logo')
-})
+  it('should show team 3 details', () => {
+    cy.get('.teams-cont').children()
+      cy.get('.team-card').last()
+        .find('h2').contains('Washington Wizards')
+        .get('.team-card').last()
+        .find('img.team-logo').should('have.attr', 'alt', 'Washington Wizards logo')
+  })
 
   it('should update url to clicked team details', () => {
     cy.get('.team-card').first().click()
