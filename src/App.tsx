@@ -9,6 +9,7 @@ import ErrorComponent from './Components/Error/Error'
 
 const App = () => {
   const [teams, setTeams] = useState([])
+  const [searchTerm, setSearchTerm] = useState('');  // Add this line
   const [serverError, setServerError] = useState({hasError: false, message: ''})
 
   useEffect(() => {
@@ -20,7 +21,7 @@ const App = () => {
         setServerError({hasError: true, message: `${error.message}`})
       })
 }, [])
-  
+
   const resetError = () => {
     setServerError({hasError: false, message: ''})
   }
@@ -28,7 +29,7 @@ const App = () => {
   return (
     <Router>
       <main>
-        <Header />
+        <Header setSearchTerm={setSearchTerm} />   {/* Pass setSearchTerm to Header */}
         {serverError.hasError ? (
           <ErrorComponent 
             message={serverError.message} 
@@ -36,7 +37,7 @@ const App = () => {
           />
         ) : (
         <Routes> 
-          <Route path="/" element={<AllTeams teams={teams} />} />
+          <Route path="/" element={<AllTeams teams={teams} searchTerm={searchTerm} />} /> {/* Pass searchTerm to AllTeams */}
           <Route path="/team/:teamId" element={<SelectedTeam />} />
           <Route path="*" element={<ErrorComponent message={{message: "The page you're looking for doesn't exist."}} resetError={resetError} />} />
         </Routes>
@@ -46,4 +47,4 @@ const App = () => {
   )
 }
 
-export default App
+export default App;

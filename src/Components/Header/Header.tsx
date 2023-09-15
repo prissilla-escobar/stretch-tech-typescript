@@ -4,7 +4,11 @@ import nbaLogo from '../../Assets/NBA-logo-png.png'
 import { Link } from 'react-router-dom'
 
 
-const Header = () => {
+type HeaderProps = {
+    setSearchTerm: (term: string) => void;
+  };
+
+const Header = ( { setSearchTerm }: HeaderProps) => {
     return (
         <header>
             <div className="page-name">
@@ -13,7 +17,7 @@ const Header = () => {
                 </Link>
                 <img className="nba-logo" src={nbaLogo} alt="a silouhette of a man running and bouncing a basketball with NBA next to him" />
             </div>
-            <Search />
+            <Search setSearchTerm={setSearchTerm} />
         </header>
     )
 }
