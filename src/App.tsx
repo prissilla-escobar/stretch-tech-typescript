@@ -11,7 +11,7 @@ const App = () => {
   const [teams, setTeams] = useState([])
   const [searchTerm, setSearchTerm] = useState('');  // Add this line
   const [serverError, setServerError] = useState({hasError: false, message: ''})
-
+console.log(teams)
   useEffect(() => {
     getTeams()
       .then((data: any) => {
