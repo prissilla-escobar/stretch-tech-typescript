@@ -36,6 +36,4 @@ const AllTeams = ({ teams }: AllTeamsProps) => {
   )
 }
 
-
-
 export default AllTeams
