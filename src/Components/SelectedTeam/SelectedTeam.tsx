@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import { Team } from "../AllTeams/AllTeams";
-import { getPlayers } from "../../API";
-import { nbaLogos, NBALogoType } from "../../nbaLogos";
-import "../../Components/SelectedTeam/SelectedTeam.css";
-import back from "../../Assets/back-button.png";
-import ErrorComponent from "../Error/Error";
-import LoadingComponent from "../Loading/Loading";
+import { useEffect, useState } from "react"
+import { useParams, Link } from "react-router-dom"
+import { Team } from "../AllTeams/AllTeams"
+import { getPlayers } from "../../API"
+import { nbaLogos, NBALogoType } from "../../nbaLogos"
+import "../../Components/SelectedTeam/SelectedTeam.css"
+import back from "../../Assets/back-button.png"
+import ErrorComponent from "../Error/Error"
+import LoadingComponent from "../Loading/Loading"
 
 export type Player = {
   id: number;
@@ -17,38 +17,38 @@ export type Player = {
 };
 
 const SelectedTeam = () => {
-  const { teamId } = useParams<{ teamId: string }>();
-  const [players, setPlayers] = useState<Player[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(true); // <-- Loading state
+  const { teamId } = useParams<{ teamId: string }>()
+  const [players, setPlayers] = useState<Player[]>([])
+  const [error, setError] = useState<string | null>(null)
+  const [loading, setLoading] = useState<boolean>(true)
   const selectedTeamLogo: NBALogoType | undefined = nbaLogos.find(
     (team) => team.id === teamId
-  );
+  )
   useEffect(() => {
-    setLoading(true); // <-- Start loading
+    setLoading(true)
     getPlayers()
       .then((data: any) => {
         const filteredPlayers = data.data.filter(
           (player: Player) => player.team.id.toString() === teamId
-        );
-        setPlayers(filteredPlayers);
+        )
+        setPlayers(filteredPlayers)
         setTimeout(() => {
-          setLoading(false);
-      }, 300);
+          setLoading(false)
+      }, 300)
       })
       .catch((error: any) => {
-        console.error("Failed to fetch players:", error);
-        setError(error.message || "An error occurred while fetching players.");
-        setLoading(false); // <-- End loading even if there's an error
-      });
-  }, [teamId]);
+        console.error("Failed to fetch players:", error)
+        setError(error.message || "An error occurred while fetching players.")
+        setLoading(false)
+      })
+  }, [teamId])
 
   if (loading) {
-    return <LoadingComponent message="Loading players..." />;
+    return <LoadingComponent message="Loading players..." />
   }
 
   if (error) {
-    return <ErrorComponent message={error} resetError={() => setError(null)} />;
+    return <ErrorComponent message={error} resetError={() => setError(null)} />
   }
 
   return (
@@ -82,7 +82,7 @@ const SelectedTeam = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SelectedTeam;
+export default SelectedTeam
