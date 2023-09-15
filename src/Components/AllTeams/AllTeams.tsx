@@ -43,4 +43,5 @@ const AllTeams = ({ teams, searchTerm }: AllTeamsProps) => {
   )
 }
 
-export default AllTeams;
+export default AllTeams
+

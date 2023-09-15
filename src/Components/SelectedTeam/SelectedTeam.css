@@ -77,10 +77,12 @@ p {
 }
 
 .back-button {
+  transition: transform 0.3s;
   height: 60px;
   margin-bottom: 15px;
 }
 
 .back-button:hover {
+  transform: scale(1.15);
   height: 75px;
 }

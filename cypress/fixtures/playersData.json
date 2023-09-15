@@ -37,42 +37,6 @@
         "weight_pounds": null
     },
     {
-        "id": 46403299,
-        "first_name": "Stan",
-        "height_feet": null,
-        "height_inches": null,
-        "last_name": "McKenzie",
-        "position": "",
-        "team": {
-            "id": 30,
-            "abbreviation": "WAS",
-            "city": "Washington",
-            "conference": "East",
-            "division": "Southeast",
-            "full_name": "Washington Wizards",
-            "name": "Wizards"
-        },
-        "weight_pounds": null
-    },
-    {
-        "id": 46403302,
-        "first_name": "Roland",
-        "height_feet": null,
-        "height_inches": null,
-        "last_name": "West",
-        "position": "",
-        "team": {
-            "id": 30,
-            "abbreviation": "WAS",
-            "city": "Washington",
-            "conference": "East",
-            "division": "Southeast",
-            "full_name": "Washington Wizards",
-            "name": "Wizards"
-        },
-        "weight_pounds": null
-    },
-    {
         "id": 38017722,
         "first_name": "Tyrese",
         "height_feet": null,
@@ -195,42 +159,6 @@
             "division": "Central",
             "full_name": "Cleveland Cavaliers",
             "name": "Cavaliers"
-        },
-        "weight_pounds": null
-    },
-    {
-        "id": 17896103,
-        "first_name": "Jay",
-        "height_feet": null,
-        "height_inches": null,
-        "last_name": "Huff",
-        "position": "F-C",
-        "team": {
-            "id": 30,
-            "abbreviation": "WAS",
-            "city": "Washington",
-            "conference": "East",
-            "division": "Southeast",
-            "full_name": "Washington Wizards",
-            "name": "Wizards"
-        },
-        "weight_pounds": null
-    },
-    {
-        "id": 18678058,
-        "first_name": "Jordan",
-        "height_feet": null,
-        "height_inches": null,
-        "last_name": "Goodwin",
-        "position": "",
-        "team": {
-            "id": 30,
-            "abbreviation": "WAS",
-            "city": "Washington",
-            "conference": "East",
-            "division": "Southeast",
-            "full_name": "Washington Wizards",
-            "name": "Wizards"
         },
         "weight_pounds": null
     }
