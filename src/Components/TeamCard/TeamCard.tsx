@@ -1,6 +1,6 @@
 import './TeamCard.css'
 import { nbaLogos, NBALogoType } from '../../nbaLogos'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 type TeamCardProps = {
   id: number;
