@@ -2,6 +2,9 @@
 
 Easily view and search for basketball teams and their rosters with ROSTERWATCH. Stay updated with your favorite team's line-up and never miss out on any player details.
 
+## Deployed Link
+[RosterWatch](https://rosterwatch.vercel.app/)
+
 ## Features
 
 - **Team Rosters**: Browse through team rosters to see player details!
