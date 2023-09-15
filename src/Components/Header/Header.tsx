@@ -1,7 +1,7 @@
 import './Header.css'
 import Search from '../Search/Search'
 import nbaLogo from '../../Assets/NBA-logo-png.png'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 
 type HeaderProps = {
@@ -9,6 +9,9 @@ type HeaderProps = {
   };
 
 const Header = ( { setSearchTerm }: HeaderProps) => {
+  const { pathname } = useLocation()
+
+  const isHomePage = pathname === '/'
     return (
         <header>
             <div className="page-name">
@@ -17,7 +20,8 @@ const Header = ( { setSearchTerm }: HeaderProps) => {
                 </Link>
                 <img className="nba-logo" src={nbaLogo} alt="a silouhette of a man running and bouncing a basketball with NBA next to him" />
             </div>
-            <Search setSearchTerm={setSearchTerm} />
+            {isHomePage &&
+            <Search setSearchTerm={setSearchTerm} />}
         </header>
     )
 }
