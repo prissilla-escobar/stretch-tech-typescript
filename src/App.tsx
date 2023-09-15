@@ -29,7 +29,7 @@ console.log(teams)
   return (
     <Router>
       <main>
-        <Header setSearchTerm={setSearchTerm} />   {/* Pass setSearchTerm to Header */}
+        <Header setSearchTerm={setSearchTerm} /> 
         {serverError.hasError ? (
           <ErrorComponent 
             message={serverError.message} 
@@ -37,7 +37,7 @@ console.log(teams)
           />
         ) : (
         <Routes> 
-          <Route path="/" element={<AllTeams teams={teams} searchTerm={searchTerm} />} /> {/* Pass searchTerm to AllTeams */}
+          <Route path="/" element={<AllTeams teams={teams} searchTerm={searchTerm} />} />
           <Route path="/team/:teamId" element={<SelectedTeam />} />
           <Route path="*" element={<ErrorComponent message={{message: "The page you're looking for doesn't exist."}} resetError={resetError} />} />
         </Routes>

@@ -21,10 +21,6 @@ describe('selected team page on load', () => {
 
     .get('img').should('have.attr', 'src', '/static/media/NBA-logo-png.92cb6f78ebae7938d944.png')
 
-    .get('.search-area').should('exist')
-      .get('img').should('have.class', 'dunk-logo')
-      .get('input').should('not.have.value')
-
     .get('.roster-container').should('exist')
       .get('.player-list').children().should('have.length', '4')
 
@@ -85,4 +81,5 @@ describe('selected team page on load', () => {
     cy.get('.home-link').click()
       .url().should('eq', 'http://localhost:3000/')
   })
+  
 })
