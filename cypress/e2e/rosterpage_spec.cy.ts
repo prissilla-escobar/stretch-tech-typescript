@@ -56,6 +56,16 @@ describe('selected team page on load', () => {
       .url().should('eq', 'http://localhost:3000/')
   })
 
+  it('rosterwatch logo should be clicked to return home', () => {
+    cy.visit('http://localhost:3000')
+    cy.get('.team-card').last().click()
+      .url().should('eq', 'http://localhost:3000/team/30')
+
+    cy.get('.page-name')
+      .get('h1').click()
+      .url().should('eq', 'http://localhost:3000/')
+  })
+
   it('should display an error message for 500 error', () => {
     cy.intercept('GET', 'https://free-nba.p.rapidapi.com/players?page=0&per_page=100', {
       statusCode: 500,
