@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import './AllTeams.css'
 import TeamCard from '../TeamCard/TeamCard'
 
@@ -13,10 +14,16 @@ export type Team = {
 
 type AllTeamsProps = {
   teams: Team[]
+  searchTerm: string;
 }
-const AllTeams = ({ teams }: AllTeamsProps) => {
 
-  const teamCards = teams.map((team) => {
+const AllTeams = ({ teams, searchTerm }: AllTeamsProps) => {
+  const filteredTeams = teams.filter(team => {
+    return team.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+           team.city.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+
+  const teamCards = filteredTeams.map((team) => {
     return(
       <TeamCard
         key={team.id}
@@ -36,6 +43,4 @@ const AllTeams = ({ teams }: AllTeamsProps) => {
   )
 }
 
-
-
-export default AllTeams
+export default AllTeams;
