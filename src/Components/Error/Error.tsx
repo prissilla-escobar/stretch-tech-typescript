@@ -1,5 +1,5 @@
-import { NavLink } from "react-router-dom";
-import './Error.css';
+import { NavLink } from "react-router-dom"
+import './Error.css'
 
 type ErrorProps = {
     message?: string | { message: string };
@@ -28,7 +28,7 @@ type ErrorProps = {
     </div>
   </NavLink>
 </div>
-  );
+  )
 }
 
-export default ErrorComponent;
+export default ErrorComponent
