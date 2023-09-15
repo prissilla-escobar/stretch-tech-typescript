@@ -6,25 +6,22 @@ import AllTeams from './Components/AllTeams/AllTeams'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import SelectedTeam from './Components/SelectedTeam/SelectedTeam'
 import ErrorComponent from './Components/Error/Error'
-import Search from './Components/Search/Search'
 
 const App = () => {
   const [teams, setTeams] = useState([])
+  const [searchTerm, setSearchTerm] = useState('');  // Add this line
   const [serverError, setServerError] = useState({hasError: false, message: ''})
-
-console.log('App teams: ', teams)
 
   useEffect(() => {
     getTeams()
       .then((data: any) => {
-        console.log('data.data: ', data.data)
         setTeams(data.data)
       })
       .catch((error: any) => {
         setServerError({hasError: true, message: `${error.message}`})
       })
 }, [])
-  
+
   const resetError = () => {
     setServerError({hasError: false, message: ''})
   }
@@ -32,7 +29,7 @@ console.log('App teams: ', teams)
   return (
     <Router>
       <main>
-        <Header teams={teams}/>
+        <Header setSearchTerm={setSearchTerm} />   {/* Pass setSearchTerm to Header */}
         {serverError.hasError ? (
           <ErrorComponent 
             message={serverError.message} 
@@ -40,7 +37,7 @@ console.log('App teams: ', teams)
           />
         ) : (
         <Routes> 
-          <Route path="/" element={<AllTeams teams={teams}/>} />
+          <Route path="/" element={<AllTeams teams={teams} searchTerm={searchTerm} />} /> {/* Pass searchTerm to AllTeams */}
           <Route path="/team/:teamId" element={<SelectedTeam />} />
           <Route path="*" element={<ErrorComponent message={{message: "The page you're looking for doesn't exist."}} resetError={resetError} />} />
         </Routes>
@@ -50,4 +47,4 @@ console.log('App teams: ', teams)
   )
 }
 
-export default App
+export default App;

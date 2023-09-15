@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import './AllTeams.css'
 import TeamCard from '../TeamCard/TeamCard'
 
@@ -10,36 +11,36 @@ export type Team = {
   full_name: string;
   name: string;
 }
-type AllTeamsTeamsProps = { teams?: Team[]}
+
 type AllTeamsProps = {
-  filteredTeams?: Team[]; // Type assertion here
+  teams: Team[]
+  searchTerm: string;
 }
 
-const AllTeams = ({ filteredTeams, teams }: AllTeamsProps & AllTeamsTeamsProps) => {
+const AllTeams = ({ teams, searchTerm }: AllTeamsProps) => {
+  const filteredTeams = teams.filter(team => {
+    return team.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+           team.city.toLowerCase().includes(searchTerm.toLowerCase());
+  });
 
-  console.log('AllTeams filteredTeams: ', filteredTeams)
-
-  console.log('AllTeams teams: ', teams)
-
-
-  const teamCards = (filteredTeams ?? []).map((team) => (
-    <TeamCard
-      key={team.id}
-      id={team.id}
-      abbreviation={team.abbreviation}
-      city={team.city}
-      conference={team.conference}
-      division={team.division}
-      full_name={team.full_name}
-      name={team.name}
-    />
-  ));
+  const teamCards = filteredTeams.map((team) => {
+    return(
+      <TeamCard
+        key={team.id}
+        id={team.id}
+        abbreviation={team.abbreviation}
+        city={team.city}
+        conference={team.conference}
+        division={team.division}
+        full_name={team.full_name}
+        name={team.name}
+      />
+    )
+  })
 
   return (
-    <div className="teams-cont">
-      {teamCards.length > 0 ? teamCards : <p>No teams available</p>}
-    </div>
-  );
+    <div className="teams-cont">{teamCards}</div>
+  )
 }
 
 export default AllTeams;
