@@ -1,4 +1,4 @@
-import "./Loading.css";
+import "./Loading.css"
 
 const LoadingComponent = ({ message = "Loading..." }) => {
   return (
@@ -12,7 +12,7 @@ const LoadingComponent = ({ message = "Loading..." }) => {
         <div className="shadow"></div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default LoadingComponent;
+export default LoadingComponent
