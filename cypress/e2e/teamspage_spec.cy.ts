@@ -22,7 +22,7 @@ describe('teams page on-load', () => {
     cy.wait(['@teamsApiTest'])
     cy.get('.teams-cont').find('.team-card').should('have.length', 3)
 
-    cy.get('.team-card').first().contains('h3', 'Hawks')
+    cy.get('.team-card').first().contains('h2', 'Hawks')
 
   })
 
@@ -30,20 +30,17 @@ describe('teams page on-load', () => {
     cy.wait(['@teamsApiTest'])
     cy.get('.teams-cont').children()
       .get(':nth-child(1)')
-        .contains('h3', 'Atlanta Hawks')
+        .contains('h2', 'Atlanta Hawks')
         .get('img.team-logo').should('have.attr', 'alt', 'Atlanta Hawks logo')
   })
 
-  // HELP PLEASE
-// it('should show team 3 details', () => {
-//   cy.visit('http://localhost:3000')
-//   cy.wait(['@teamsApiTest'])
-//   cy.get('.teams-cont').children()
-//       .get(':nth-child(3) > .team-card')
-//     cy.get('.team-card').last()
-//         .contains('h3', 'Washington Wizards')
-//         .get('img.team-logo').should('have.attr', 'alt', 'Washington Wizards logo')
-// })
+it('should show team 3 details', () => {
+  cy.get('.teams-cont').children()
+    cy.get('.team-card').last()
+      .find('h2').contains('Washington Wizards')
+      .get('.team-card').last()
+      .find('img.team-logo').should('have.attr', 'alt', 'Washington Wizards logo')
+})
 
   it('should update url to clicked team details', () => {
     cy.get('.team-card').first().click()
