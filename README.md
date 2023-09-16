@@ -8,8 +8,8 @@ Easily view and search for basketball teams and their rosters with ROSTERWATCH. 
 
 ## Features
 
-[RosterWatch Demo](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzN0bGFwdHA0N2RwdmhvemtjZGM1dDM2YzJlanE3cXE3ejVkaml5ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EZ5mCzmcWdU6TQYaJI/giphy.gif)
-[Error Handling](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa29vaHdmcHZ4azBkbjFvdXowMm54OTNnOWd0cmdzaGVwN2tvMDFyZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/RHffgytZuh97hDikI4/giphy.gif)
+![RosterWatch Demo](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzN0bGFwdHA0N2RwdmhvemtjZGM1dDM2YzJlanE3cXE3ejVkaml5ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EZ5mCzmcWdU6TQYaJI/giphy.gif)
+![Error Handling](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa29vaHdmcHZ4azBkbjFvdXowMm54OTNnOWd0cmdzaGVwN2tvMDFyZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/RHffgytZuh97hDikI4/giphy.gif)
 
 
 - **Team Rosters**: Browse through team rosters to see player details!
