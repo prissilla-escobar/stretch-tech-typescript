@@ -6,6 +6,9 @@ type SearchProps = {
 };
 
 const Search = ({ setSearchTerm }: SearchProps) => {
+    const handleSubmit = (event: any) => {
+      event.preventDefault()
+  }
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(event.target.value);
     };
@@ -13,7 +16,7 @@ const Search = ({ setSearchTerm }: SearchProps) => {
 
     return (
         <div className="search-area">
-            <form>
+            <form onSubmit={handleSubmit}>
                 <input 
                   type='search' 
                   id="searchInput" 
