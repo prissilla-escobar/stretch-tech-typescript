@@ -9,9 +9,8 @@ import ErrorComponent from './Components/Error/Error'
 
 const App = () => {
   const [teams, setTeams] = useState([])
-  const [searchTerm, setSearchTerm] = useState('');  // Add this line
+  const [searchTerm, setSearchTerm] = useState('');
   const [serverError, setServerError] = useState({hasError: false, message: ''})
-console.log(teams)
   useEffect(() => {
     getTeams()
       .then((data: any) => {
@@ -21,6 +20,8 @@ console.log(teams)
         setServerError({hasError: true, message: `${error.message}`})
       })
 }, [])
+
+
 
   const resetError = () => {
     setServerError({hasError: false, message: ''})
